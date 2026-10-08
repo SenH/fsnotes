@@ -31,8 +31,6 @@ class CodeBlockDetector {
     }
 
     public func findCodeBlocks(in textStorage: NSAttributedString, range searchRange: NSRange? = nil) -> [NSRange] {
-        guard UserDefaultsManagement.codeBlockHighlight else { return [] }
-
         let rangeToSearch = searchRange ?? NSRange(location: 0, length: textStorage.length)
         return regex.matches(in: textStorage.string, options: [], range: rangeToSearch)
                     .map { $0.range }
